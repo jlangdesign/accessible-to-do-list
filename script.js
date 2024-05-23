@@ -8,7 +8,7 @@ const heading = document.querySelector('#heading');
   Execute functions on submit of the form
 */
 to_do_form.addEventListener('submit', function (event) {
-  event.preventDefault();
+  event.preventDefault(); // Prevent the default behavior of submitting the form.
   let task = to_do_input.value;
   addTaskToDOM(task);
   removeValue(to_do_input);
@@ -18,8 +18,8 @@ to_do_form.addEventListener('submit', function (event) {
 /*
   We are using Event Bubbling to listen to when the <ul> element
   that keeps the tasks is clicked. When it is clicked, if the click
-  originates on the delete button, then we execute the delete 
-  task functionality. 
+  originates on the delete button, then we execute the delete
+  task functionality.
 */
 list.addEventListener('click', function (event) {
   if (hasClassName(event.target, 'delete_task')) {
@@ -37,7 +37,7 @@ function deleteTask(theTarget) {
 
 /*
   We generate a new <li>, <input type="checkbox">, and <button>
-  each time a task is added to the DOM. 
+  each time a task is added to the DOM.
 */
 function addTaskToDOM(task) {
   let newID = generateID();
@@ -73,9 +73,9 @@ function removeValue(input) {
 }
 /*
   Sighted users are able to see when a task is added, but screen reader
-  users are more likely to be blind, so we want to make the 
-  screen reader voice the actions. 
-  We use the #sc_feedback element in the DOM to populate 
+  users are more likely to be blind, so we want to make the
+  screen reader voice the actions.
+  We use the #sc_feedback element in the DOM to populate
   the text which would be voiced
 */
 function screenReaderFeedback(task, feedback = 'added') {
@@ -85,7 +85,7 @@ function screenReaderFeedback(task, feedback = 'added') {
 /*
   We want the checkbox to go before the label,
   so we need to connect the labels to the inputs
-  with IDs. 
+  with IDs.
 */
 function generateID() {
   let idPrefix = 'task_num_';

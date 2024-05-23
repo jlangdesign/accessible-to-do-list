@@ -11,25 +11,34 @@
 <body>
     <div class="container">
         <div class="content">
+            <!-- Make <h1> interactive via JS but not Tab. -->
             <h1 tabindex="-1" id="heading">To do list</h1>
             <form action="index.html" method="post" id="to_do_form">
                 <label for="todo" id="main_label">Add a new task to your list (required)</label>
                 <div>
+                    <!-- With aria-describedby, the user will hear the label and then the text in "example". -->
                     <input type="text" class="task_input" aria-describedby="example" id="todo" required>
                     <input type="submit" value="Add" class="add_task">
                 </div>
+                <!-- More accessible hint than placeholder, and it also doesn't go away when using autofill. -->
                 <div class="example" id="example">
                     Example: Feed The Chicken
                 </div>
             </form>
+
             <ul id="list" class="list">
             </ul>
+
+            <!-- aria-live announces changes to assistive technologies. "polite" means that it will wait for the screen reader to finish announcing what it's currently announcing before announcing this - the opposite of "assertive". -->
+            <!-- Some screen readers will only announce it if the <div> isn't hidden, hence why we don't hide it here. -->
             <div role="status" aria-live="polite" id="sc_feedback" class="sc_feedback">
                 <!-- Area to be pronounceable by screen readers -->
             </div>
         </div>
     </div>
+
     <script src="script.js"></script>
+
 </body>
 
 </html>
